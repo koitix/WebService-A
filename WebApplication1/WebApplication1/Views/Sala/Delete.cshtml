@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.Classes.Sala
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Deletar</h2>
+<h3>Tem certeza que quer deletar esta sala?</h3>
+@using (Html.BeginForm("Delete", "Sala", FormMethod.Post))
+{
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.id_sala)
+            </dt>
+            <dd>
+                <input asp-for="id_sala" class="col-md-1" readonly="readonly" />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.status)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <button type="submit" value="Delete" class="btn btn-default" >Deletar</button> 
+            <a asp-action="Index">Voltar</a>
+        </form>
+    </div>
+
+
+}

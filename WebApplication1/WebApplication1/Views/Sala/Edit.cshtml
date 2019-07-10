@@ -1,0 +1,49 @@
+﻿@model WebApplication1.Models.Classes.Sala
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h2>Editar Sala</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="id_sala" class="control-label"></label>
+            <input asp-for="id_sala" class="form-control" />
+            <span asp-validation-for="id_sala" class="text-danger"></span>
+        </div>*@
+            @Html.HiddenFor(model=> model.id_sala)
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.Label("Sala Ocupada:", null, new { @class = "col-md-5" })
+                <div class="col-md-6">
+
+                    @Html.RadioButtonFor(model => model.status, 1, new { @Value = Model.status })
+                    Sim
+                    @Html.RadioButtonFor(model => model.status, 0, new { @Value = Model.status })
+                    Não
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+                <a asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

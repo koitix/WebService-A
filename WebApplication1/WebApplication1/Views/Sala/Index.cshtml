@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication1.Models.Classes.Sala>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("Código")
+            </th>
+            <th>
+                @Html.Label("Nome")
+            </th>
+            <th>
+                @Html.Label("Status")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_sala)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+
+                @if (item.status == 0)
+                {
+                    <td>
+                        Livre
+                    </td>
+
+                }
+                else
+                {
+                    <td>
+                        Ocupado
+                    </td>
+                }
+                @*@Html.DisplayFor(modelItem => item.status)*@
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.id_sala })
+                    @*@Html.ActionLink("Details", "Details", new { id = item.id_sala }) |*@
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.id_sala })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
